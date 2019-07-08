@@ -27,8 +27,8 @@ public class ProductCategory{
 	
 	private String categoryName;
 	
-	@OneToMany
-	private List<Product> products;
+//	@OneToMany
+//	private List<Product> products;
 	
 	
 	
@@ -45,16 +45,8 @@ public class ProductCategory{
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	@Override
-	public String toString() {
-		return "ProductCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
-	}
-	public List<Product> getProducts() {
-		return products;
-	}
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
+	
+
 	
 	
 

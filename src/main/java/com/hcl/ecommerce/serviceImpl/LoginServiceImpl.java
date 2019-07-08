@@ -16,7 +16,7 @@ import com.hcl.ecommerce.service.LoginService;
 public class LoginServiceImpl implements LoginService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoginServiceImpl.class);
-	
+
 	@Autowired
 	LoginRepo loginRepo;
 
@@ -50,18 +50,18 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String login(String login, String password) throws UserNotFoundException {
 
+		/*
+		 * Optional<User> user = loginRepo.getUserDetails(login, password);
+		 * 
+		 * LOGGER.info("near to User details"); if(user.isPresent()) {
+		 * LOGGER.info("haiiii"); }else { throw new
+		 * UserNotFoundException("Please Enter Valid Login and Password "); } return
+		 * "User LoginDone Sucessfully !";
+		 */
+
 		
-		Optional<User> user = loginRepo.getUserDetails(login, password);
 		
-		LOGGER.info("near to User details");
-		if(user.isPresent())
-		{
-		LOGGER.info("haiiii");
-		}else
-		{
-			throw new UserNotFoundException("Please Enter Valid Login and Password ");
-		}
-		return "User LoginDone Sucessfully !";
+		return "User Logged in Sucessfully";
 	}
 
 }

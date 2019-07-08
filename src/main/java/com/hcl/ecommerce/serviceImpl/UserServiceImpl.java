@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hcl.ecommerce.entity.Product;
 import com.hcl.ecommerce.entity.User;
 import com.hcl.ecommerce.exception.UserNotFoundException;
 import com.hcl.ecommerce.repository.UserRepo;
@@ -39,31 +40,37 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String updateUserProfile(Long userId, User user) throws UserNotFoundException {
 		Optional<User> userData = userRepo.findById(userId);
-		if(userData.isPresent())
-		{
+		if (userData.isPresent()) {
 			userData.get().setLogin(user.getLogin());
 			userData.get().setPassword(user.getPassword());
 			userData.get().setUserName(user.getUserName());
 			userData.get().setUserType(user.getUserType());
-			
+
 			userRepo.save(userData.get());
-			
-		}else {
+
+		} else {
 			throw new UserNotFoundException("User Details Not Exist !");
 		}
 		return "User Details Updated Sucessfully !";
 	}
 
+
+
 	@Override
-	public List<User> users(String userType) {
-		List<User>li1=new ArrayList<>();
-		List<User> li =userRepo.findAll();
-		for (User user : li) {
-			if(user.getUserType().equals("Seller"))
-			{
-				li.add(user);
-			}
-		}
+	public String findUsernameAndPassword(String login, String password) {
+	
+	User user = userRepo.findByLogin(login);
+	if (user != null) {
+		return "User Logged in Sucessfully";
+	}
+	
+	return "User Logged in Sucessfully";
+	}
+
+	@Override
+	public List<User> findUsers(String userType) {
+		List<User> li = userRepo.findByUserType(userType);
 		return li;
 	}
+	
 }

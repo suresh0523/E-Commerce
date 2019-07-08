@@ -14,7 +14,11 @@ public interface ProductService {
 	List<Product> products();
 	
 		
-	List<Product> products(Long categoryId);
+	List<Product> products(long categoryId);
+	
+	List<Product> findByProductName(String productName);
+	
+	
 	
 	//List<Product> findByName(String productName);
 	

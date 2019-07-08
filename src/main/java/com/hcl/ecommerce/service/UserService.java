@@ -14,7 +14,10 @@ public interface UserService {
 
 	public String updateUserProfile(Long userId,User user);
 	
-	public List<User> users(String userType);
+
+	public String findUsernameAndPassword(String login,String password );
+	
+	public List<User> findUsers(String userType);
 	
 
 

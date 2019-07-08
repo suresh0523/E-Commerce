@@ -26,7 +26,7 @@ public class Product {
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
-	private ProductCategory productCategory;
+	private ProductCategory categoryId;
 	
 	
 
@@ -67,12 +67,14 @@ public class Product {
 		this.productStatus = productStatus;
 	}
 
-	public ProductCategory getProductCategory() {
-		return productCategory;
+	
+
+	public ProductCategory getCategoryId() {
+		return categoryId;
 	}
 
-	public void setProductCategory(ProductCategory productCategory) {
-		this.productCategory = productCategory;
+	public void setCategoryId(ProductCategory categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public User getUser() {
@@ -83,11 +85,26 @@ public class Product {
 		this.user = user;
 	}
 
+	
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productQuantity="
-				+ productQuantity + ", productStatus=" + productStatus + ", productCategory=" + productCategory
-				+ ", user=" + user + "]";
+				+ productQuantity + ", productStatus=" + productStatus + ", categoryId=" + categoryId + ", user=" + user
+				+ "]";
+	}
+	
+	
+
+	public Product(Long productId, String productName, int productQuantity, String productStatus,
+			ProductCategory categoryId, User user) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productQuantity = productQuantity;
+		this.productStatus = productStatus;
+		this.categoryId = categoryId;
+		this.user = user;
 	}
 
 	public Product() {
@@ -95,15 +112,6 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(Long productId, String productName, int productQuantity, String productStatus,
-			ProductCategory productCategory, User user) {
-		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.productQuantity = productQuantity;
-		this.productStatus = productStatus;
-		this.productCategory = productCategory;
-		this.user = user;
-	}
+
 
 }

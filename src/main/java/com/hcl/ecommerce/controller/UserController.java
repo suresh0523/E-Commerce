@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,8 +42,23 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{userType}")
-	public List<User> users(@PathVariable String userType)
+	public List<User> findUsers(@PathVariable String userType)
 	{
-		return userServiceImpl.users(userType);
+		return userServiceImpl.findUsers(userType);
 	}
+	
+
+	@PostMapping("/users/{login}/{password}")
+	public String loginUser(@RequestHeader(value ="login") String login,@RequestHeader(value ="password") String password) {
+		return userServiceImpl.findUsernameAndPassword(login, password);
+	}
+	
+//	@GetMapping("/userType/{userType}")
+//	public  List<User> findUsers(@PathVariable String userType)
+//	{
+//		
+//		return userServiceImpl.findUsers(userType);
+//		
+//		
+//	}
 }
